@@ -45,12 +45,12 @@ Chinese (pinyin) in T1/EC and UTF-8 encodings.
 %install
 mkdir -p %{buildroot}%{_texmf_language_dat_d}
 cat > %{buildroot}%{_texmf_language_dat_d}/hyphen-chinese <<EOF
-%% from hyphen-chinese:
+\%\% from hyphen-chinese:
 pinyin loadhyph-zh-latn-pinyin.tex
 EOF
 mkdir -p %{buildroot}%{_texmf_language_def_d}
 cat > %{buildroot}%{_texmf_language_def_d}/hyphen-chinese <<EOF
-%% from hyphen-chinese:
+\%\% from hyphen-chinese:
 \addlanguage{pinyin}{loadhyph-zh-latn-pinyin.tex}{}{1}{1}
 EOF
 mkdir -p %{buildroot}%{_texmf_language_lua_d}
