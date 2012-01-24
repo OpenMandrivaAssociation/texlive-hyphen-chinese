@@ -5,8 +5,8 @@
 # catalog-license undef
 # catalog-version undef
 Name:		texlive-hyphen-chinese
-Version:	20111103
-Release:	2
+Version:	20120124
+Release:	1
 Summary:	Chinese pinyin hyphenation patterns
 Group:		Publishing
 URL:		http://tug.org/texlive
@@ -45,14 +45,16 @@ Chinese (pinyin) in T1/EC and UTF-8 encodings.
 %install
 mkdir -p %{buildroot}%{_texmf_language_dat_d}
 cat > %{buildroot}%{_texmf_language_dat_d}/hyphen-chinese <<EOF
-\%\% from hyphen-chinese:
+\%% from hyphen-chinese:
 pinyin loadhyph-zh-latn-pinyin.tex
 EOF
+perl -pi -e 's|\\%%|%%|;' %{buildroot}%{_texmf_language_dat_d}/hyphen-chinese
 mkdir -p %{buildroot}%{_texmf_language_def_d}
 cat > %{buildroot}%{_texmf_language_def_d}/hyphen-chinese <<EOF
-\%\% from hyphen-chinese:
+\%% from hyphen-chinese:
 \addlanguage{pinyin}{loadhyph-zh-latn-pinyin.tex}{}{1}{1}
 EOF
+perl -pi -e 's|\\%%|%%|;' %{buildroot}%{_texmf_language_def_d}/hyphen-chinese
 mkdir -p %{buildroot}%{_texmf_language_lua_d}
 cat > %{buildroot}%{_texmf_language_lua_d}/hyphen-chinese <<EOF
 -- from hyphen-chinese:
