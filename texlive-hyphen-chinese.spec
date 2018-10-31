@@ -6,7 +6,7 @@
 # catalog-version undef
 Name:		texlive-hyphen-chinese
 Version:	20180303
-Release:	2
+Release:	3
 Summary:	Chinese pinyin hyphenation patterns
 Group:		Publishing
 URL:		http://tug.org/texlive
