@@ -1,6 +1,6 @@
 Name:		texlive-hyphen-chinese
 Version:	58652
-Release:	1
+Release:	2
 Summary:	Chinese pinyin hyphenation patterns
 Group:		Publishing
 URL:		http://tug.org/texlive
