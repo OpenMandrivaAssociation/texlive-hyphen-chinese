@@ -13,10 +13,34 @@ BuildArch:	noarch
 BuildSystem:	texlive
 Requires:	texlive(hyph-utf8)
 Requires:	texlive(hyphen-base)
-Provides:	texlive(%{tl_name}) = %{tl_revision}
+Requires:	texlive-tlpkg
+Provides:	texlive(%{tl_name}) = %{version}
 
 %description
 Hyphenation patterns for unaccented transliterated Mandarin Chinese
 (pinyin) in T1/EC and UTF-8 encodings. The latter can hyphenate pinyin
 with or without tone markers; the former only without.
 
+
+%install -a
+mkdir -p %{buildroot}%{_texmf_language_dat_d}
+cat > %{buildroot}%{_texmf_language_dat_d}/%{tl_name} <<'TL_HYPHEN_EOF'
+% from hyphen-chinese:
+pinyin loadhyph-zh-latn-pinyin.tex
+TL_HYPHEN_EOF
+mkdir -p %{buildroot}%{_texmf_language_def_d}
+cat > %{buildroot}%{_texmf_language_def_d}/%{tl_name} <<'TL_HYPHEN_EOF'
+% from hyphen-chinese:
+\addlanguage{pinyin}{loadhyph-zh-latn-pinyin.tex}{}{1}{2}
+TL_HYPHEN_EOF
+mkdir -p %{buildroot}%{_texmf_language_lua_d}
+cat > %{buildroot}%{_texmf_language_lua_d}/%{tl_name} <<'TL_HYPHEN_EOF'
+-- from hyphen-chinese:
+['pinyin'] = {
+	loader = 'loadhyph-zh-latn-pinyin.tex',
+	lefthyphenmin = 1,
+	righthyphenmin = 2,
+	synonyms = {  },
+	patterns = 'hyph-zh-latn-pinyin.pat.txt',
+},
+TL_HYPHEN_EOF
